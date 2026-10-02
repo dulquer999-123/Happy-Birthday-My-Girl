@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   For Rio ❤️
+  </title>
+  <style>
+   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #eef6ff;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(74,144,226,.20), transparent 28%),
+      radial-gradient(circle at 80% 70%, rgba(72,110,190,.16), transparent 30%),
+      linear-gradient(160deg, #020817 0%, #071a38 48%, #031126 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #stars, #hearts { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .star {
+    position: absolute; width: 2px; height: 2px; background: white;
+    border-radius: 50%; opacity: .65; animation: twinkle 3s infinite ease-in-out;
+  }
+  @keyframes twinkle { 50% { opacity: .12; transform: scale(.6); } }
+
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 40px 20px; position: relative; z-index: 1;
+  }
+  .hero-inner { max-width: 850px; }
+  .eyebrow {
+    letter-spacing: 5px; text-transform: uppercase; font-size: .78rem;
+    color: #91c9ff; margin-bottom: 24px;
+  }
+  h1 {
+    font-size: clamp(4rem, 14vw, 9rem); line-height: .9;
+    font-weight: 400; text-shadow: 0 0 40px rgba(80,160,255,.35);
+  }
+  .subtitle { margin: 30px auto; max-width: 650px; font-size: 1.2rem; line-height: 1.8; color: #c9ddf4; }
+  .scroll {
+    display: inline-block; margin-top: 25px; padding: 13px 24px;
+    border: 1px solid rgba(160,210,255,.35); border-radius: 999px;
+    color: #dff1ff; text-decoration: none; transition: .3s;
+    background: rgba(255,255,255,.04);
+  }
+  .scroll:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+
+  section {
+    position: relative; z-index: 1; max-width: 900px; margin: auto;
+    padding: 100px 24px;
+  }
+  .card {
+    background: rgba(7, 24, 52, .68); border: 1px solid rgba(150,205,255,.16);
+    border-radius: 28px; padding: clamp(28px, 6vw, 65px);
+    box-shadow: 0 25px 80px rgba(0,0,0,.25);
+    backdrop-filter: blur(10px);
+  }
+  .section-label {
+    color: #8dc9ff; letter-spacing: 3px; text-transform: uppercase;
+    font-size: .75rem; margin-bottom: 18px;
+  }
+  h2 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 400; margin-bottom: 25px; }
+  p { color: #c8d9ec; font-size: 1.12rem; line-height: 2; }
+
+  .distance {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px;
+    align-items: center; text-align: center; margin-top: 35px;
+  }
+  .place { font-size: 1.5rem; color: white; }
+  .country { display:block; font-size:.8rem; color:#8fb9df; margin-top:8px; letter-spacing:2px; }
+  .line { height: 1px; background: linear-gradient(90deg, transparent, #71baff, transparent); position:relative; }
+  .line::after { content:"♥"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); color:#8ecaff; background:#091b38; padding:8px; }
+
+  .memory {
+    margin-top: 28px; padding: 28px; border-left: 2px solid #6cb8ff;
+    background: rgba(91,166,235,.07); border-radius: 0 18px 18px 0;
+  }
+  .memory p { font-style: italic; color:#dceeff; }
+
+  .letter { font-size: 1.25rem; line-height: 2.1; }
+  .signature { margin-top: 35px; font-size: 1.5rem; color:#a9d7ff; }
+
+  .surprise-wrap { text-align:center; }
+  .surprise-btn {
+    border: 0; cursor:pointer; color:#041225; background:#b9e0ff;
+    padding:17px 30px; border-radius:999px; font:inherit; font-size:1.05rem;
+    box-shadow:0 8px 30px rgba(80,170,255,.2); transition:.3s;
+  }
+  .surprise-btn:hover { transform:translateY(-3px) scale(1.02); background:#d8eeff; }
+  #secret { max-height:0; overflow:hidden; opacity:0; transition:1s ease; }
+  #secret.show { max-height:500px; opacity:1; margin-top:35px; }
+  .final { font-size: clamp(1.5rem, 4vw, 2.5rem); color:white; line-height:1.5; }
+
+  footer { position:relative; z-index:1; text-align:center; padding:50px 20px 80px; color:#7194b8; }
+  .music-note { font-size:.9rem; margin-top:18px; color:#7298bd; }
+
+
+  /* Scattered memories: every image keeps its full original proportions. */
+  .memory-photo { position: relative; z-index: 1; max-width: 760px; margin: 20px auto 40px; padding: 0 24px; }
+  .photo-card { margin: 0; padding: 12px; border-radius: 26px; border: 1px solid rgba(170,215,255,.18); background: rgba(7,24,52,.68); box-shadow: 0 20px 60px rgba(0,0,0,.30); backdrop-filter: blur(8px); }
+  .photo-card img { display: block; width: 100%; height: auto; max-height: 680px; object-fit: contain; object-position: center; border-radius: 18px; }
+  .photo-card figcaption { padding: 13px 8px 5px; text-align: center; color: #8fb9df; font-size: .82rem; letter-spacing: 1.5px; }
+  .photo-left { transform: rotate(-1deg); }
+  .photo-right { transform: rotate(1deg); }
+  .photo-left, .photo-right { transition: transform .35s ease; }
+  .photo-left:hover { transform: rotate(-.2deg) translateY(-3px); }
+  .photo-right:hover { transform: rotate(.2deg) translateY(-3px); }
+
+  @media (max-width:600px) {
+    .distance { grid-template-columns:1fr; }
+    .line { width:80%; margin:auto; }
+    .line::after { top:50%; }
+    section { padding:70px 18px; }
+  }
+  </style>
+  <style>
+   .music-player {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.music-btn {
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0,0,0,.18);
+  transition: transform .2s ease, background .2s ease;
+}
+.music-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.2);
+}
+.music-status {
+  font-size: .88rem;
+  opacity: .78;
+}
+  </style>
+ </head>
+ <body>
+  <div id="stars">
+  </div>
+  <div id="hearts">
+  </div>
+  <header class="hero">
+   <div class="hero-inner">
+    <div class="eyebrow">
+     A little piece of my heart, across the distance
+    </div>
+    <h1>
+     Rio
+    </h1>
+    <div class="subtitle">
+     Happy Birthday, my love. ❤️
+     <br/>
+     From Qatar to Australia, somehow my heart still knows exactly where home is.
+    </div>
+    <div class="music-player">
+     <button class="music-btn" id="musicBtn" type="button">
+      🎵 Play our song ❤️
+     </button>
+     <div class="music-status" id="musicStatus">
+      Tap play and keep reading.
+     </div>
+     <audio id="bgMusic" loop="">
+      <source src="music.mp3" type="audio/mpeg"/>
+     </audio>
+    </div>
+    <a class="scroll" href="#story">
+     Read my letter ↓
+    </a>
+   </div>
+  </header>
+  <main>
+   <section id="story">
+    <div class="card">
+     <div class="section-label">
+      Our story
+     </div>
+     <h2>
+      Since 8th grade.
+     </h2>
+     <p>
+      Somehow, all these years later, the girl I knew back in 8th grade
+        is still the person I want beside me. Time changed, countries changed,
+        and life took us far apart , but what you mean to me never became smaller.
+     </p>
+     <div class="distance">
+      <div class="place">
+       Qatar
+       <span class="country">
+        ME
+       </span>
+      </div>
+      <div class="line">
+      </div>
+      <div class="place">
+       Australia
+       <span class="country">
+        YOU
+       </span>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section>
+    <div class="card">
+     <div class="section-label">
+      One memory I carry
+     </div>
+     <h2>
+      Even when the sky wasn't safe…
+     </h2>
+     <div class="memory">
+      <p>
+       “The day we cuddled under the missiles going above us.”
+      </p>
+     </div>
+     <p style="margin-top:28px;">
+      It sounds like a memory from another world, but to me it says everything:
+        when things were frightening, being close to you made the world feel a
+        little less frightening. I don't think I'll ever forget that feeling.
+     </p>
+    </div>
+   </section>
+   <section class="memory-photo photo-left">
+    <figure class="photo-card">
+     <img alt="A happy memory together" src="photo-1.jpg"/>
+     <figcaption>
+      One of my favorite little moments with you ❤️
+     </figcaption>
+    </figure>
+   </section>
+   <section>
+    <div class="card">
+     <div class="section-label">
+      Still us
+     </div>
+     <h2>
+      Different places. Same heart.
+     </h2>
+     <p>
+      No matter how far apart we are, I still find pieces of us in the smallest moments. I wanted these memories to be scattered through this page , the same way little thoughts of you keep appearing throughout my day.
+     </p>
+    </div>
+   </section>
+   <section>
+    <div class="card memory-story">
+     <div class="section-label">
+      A memory I still laugh about
+     </div>
+     <h2>
+      The Idukki escape.
+     </h2>
+     <p>
+      Remember that trip to Idukki from Kidangoor? Your parents called, and suddenly
+      we had to run out of the house and drive to a completely unknown place just
+      so we could convince them that we were actually going somewhere.
+     </p>
+     <p style="margin-top:22px;">
+      Everything happened so quickly , the rushed call, the panic, trying to make
+      the story sound believable, and then finally getting away from it all.
+      But the part I remember most is the relief afterwards. We just laughed.
+      That kind of laugh where you both know how ridiculous the whole situation
+      was, and somehow surviving it together makes it even funnier.
+     </p>
+     <p style="margin-top:22px;">
+      I think that's one of the things I love about us. Even when we're stressed,
+      scared, or completely unprepared, somehow we end up with a memory we'll
+      laugh about for years.
+     </p>
+    </div>
+   </section>
+   <section class="memory-photo photo-left">
+    <figure class="photo-card">
+     <img alt="A memory from our time together" src="photo-2.jpg"/>
+     <figcaption>
+      Some memories are special because only we know the whole story. ❤️
+     </figcaption>
+    </figure>
+   </section>
+   <section>
+    <div class="card memory-story">
+     <div class="section-label">
+      Maybe I just really love travelling…
+     </div>
+     <h2>
+      Or maybe I just really love you.
+     </h2>
+     <p>
+      There was the day I rented a whole car and drove all the way from Kochi to
+      Ettumanoor and back, just to have that time alone with you , driving around,
+      talking, and simply getting to be together.
+     </p>
+     <p style="margin-top:22px;">
+      And then there was the time I heard you had gone shopping in Kottayam with
+      your grandma. I didn't even know if I'd get to see you. I still took a bus
+      to Kottayam, just hoping I might catch a glimpse of you from afar.
+     </p>
+     <p style="margin-top:22px;">
+      Looking back, I've travelled so many places and gone so many ridiculous
+      distances whenever I wanted to see you that I have to ask myself:
+      <strong>
+       do I actually love travelling, or do I just love you?
+      </strong>
+     </p>
+     <p style="margin-top:22px;">
+      I think we both know the answer.
+     </p>
+    </div>
+   </section>
+   <section class="memory-photo photo-right">
+    <figure class="photo-card">
+     <img alt="A memory from one of our drives" src="photo-3.jpg"/>
+     <figcaption>
+      I'd drive anywhere, as long as it eventually leads me to you. ❤️
+     </figcaption>
+    </figure>
+   </section>
+   <section class="memory-photo photo-right">
+    <figure class="photo-card">
+     <img alt="A memory together" src="photo-2.jpg"/>
+     <figcaption>
+      A memory I wish I could step back into.
+     </figcaption>
+    </figure>
+   </section>
+   <section>
+    <div class="card">
+     <div class="section-label">
+      One more memory
+     </div>
+     <h2>
+      I’d choose these moments again.
+     </h2>
+     <p>
+      If I could replay every ordinary day we have shared, I would. The little smiles, the random pictures, the moments that didn’t seem important at the time , they mean so much to me now.
+     </p>
+    </div>
+   </section>
+   <section class="memory-photo photo-left">
+    <figure class="photo-card">
+     <img alt="A quiet moment together" src="photo-3.jpg"/>
+     <figcaption>
+      Just us. That’s enough.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="memory-photo photo-right">
+    <figure class="photo-card">
+     <img alt="A mirror photo together" src="photo-4.jpg"/>
+     <figcaption>
+      One of those photos I’ll always keep.
+     </figcaption>
+    </figure>
+   </section>
+   <section>
+    <div class="card">
+     <div class="section-label">
+      A letter for you
+     </div>
+     <h2>
+      Rio, I miss you.
+     </h2>
+     <div class="letter">
+      <p>
+       My love,
+       <br/>
+       <br/>
+       I wish I could be there with you today. I wish the distance between
+          Qatar and Australia was just a short walk, and I could see your face,
+          hold you close, and tell you this instead of putting it on a webpage.
+      </p>
+      <br/>
+      <p>
+       I miss you a lot. More than I probably know how to say.
+          And no matter how many kilometers are between us, there is still a part
+          of me that feels like we're those kids from 8th grade , just finding
+          our way through life together.
+      </p>
+      <br/>
+      <p>
+       I hope we get to have all the ordinary things we haven't been able to
+          have yet: waking up next to each other, laughing over nothing,
+          going places together, and making a thousand more memories.
+      </p>
+      <br/>
+      <p>
+       Most of all, I hope we can be happy together forever.
+      </p>
+      <div class="signature">
+       Happy Birthday, my Rio. ❤️
+       <br/>
+       , Yours, always
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="memory-photo photo-left">
+    <figure class="photo-card">
+     <img alt="A memory together" src="photo-5.jpg"/>
+     <figcaption>
+      I miss moments like this more than I can say.
+     </figcaption>
+    </figure>
+   </section>
+   <section>
+    <div class="card surprise-wrap">
+     <div class="section-label">
+      One last thing…
+     </div>
+     <h2>
+      There's a little surprise.
+     </h2>
+     <button class="surprise-btn" onclick="reveal()">
+      Open it ❤️
+     </button>
+     <div id="secret">
+      <p class="final">
+       If I could cross the whole world for one thing,
+       <br/>
+       it would be another day beside you.
+       <br/>
+       <br/>
+       Until then, look up at the same sky.
+       <br/>
+       I'm looking at it too. 🌙
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="memory-photo photo-right">
+    <figure class="photo-card">
+     <img alt="A playful memory together" src="photo-6.jpg"/>
+     <figcaption>
+      Still smiling because of you.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="memory-photo photo-left">
+    <figure class="photo-card">
+     <img alt="A childhood memory" src="photo-7.jpg"/>
+     <figcaption>
+      From the memories that started it all.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="memory-photo photo-right">
+    <figure class="photo-card">
+     <img alt="A family memory" src="photo-8.jpg"/>
+     <figcaption>
+      And here’s to all the memories still waiting for us.
+     </figcaption>
+    </figure>
+   </section>
+  </main>
+  <footer>
+   Made with love, from Qatar to Australia. ❤️
+   <br/>
+   <small>
+    So many memories. One very big love.
+   </small>
+  </footer>
+  <script>
+   // Create a quiet star field.
+  const stars = document.getElementById("stars");
+  for (let i = 0; i < 110; i++) {
+    const s = document.createElement("span");
+    s.className = "star";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.top = Math.random() * 100 + "%";
+    s.style.animationDelay = (Math.random() * 3) + "s";
+    s.style.opacity = (0.25 + Math.random() * 0.65);
+    stars.appendChild(s);
+  }
+
+  function reveal() {
+    document.getElementById("secret").classList.add("show");
+    for (let i = 0; i < 18; i++) {
+      const h = document.createElement("span");
+      h.textContent = "♥";
+      h.style.position = "fixed";
+      h.style.left = (45 + Math.random() * 10) + "%";
+      h.style.top = "55%";
+      h.style.zIndex = 5;
+      h.style.color = "#b9e0ff";
+      h.style.fontSize = (12 + Math.random() * 18) + "px";
+      h.style.transition = "transform 2s ease, opacity 2s ease";
+      document.getElementById("hearts").appendChild(h);
+      requestAnimationFrame(() => {
+        h.style.transform = `translate(${(Math.random()-0.5)*280}px, ${-100-Math.random()*300}px) rotate(${Math.random()*60-30}deg)`;
+        h.style.opacity = "0";
+      });
+      setTimeout(() => h.remove(), 2100);
+    }
+  }
+  </script>
+  <script>
+   const music = document.getElementById("bgMusic");
+  const musicBtn = document.getElementById("musicBtn");
+  const musicStatus = document.getElementById("musicStatus");
+
+  musicBtn.addEventListener("click", async () => {
+    if (music.paused) {
+      try {
+        await music.play();
+        musicBtn.textContent = "⏸ Pause our song ❤️";
+        musicStatus.textContent = "Our song is playing.";
+      } catch (error) {
+        musicStatus.textContent = "Tap play again to start the music.";
+      }
+    } else {
+      music.pause();
+      musicBtn.textContent = "🎵 Play our song ❤️";
+      musicStatus.textContent = "Music paused.";
+    }
+  });
+
+  music.addEventListener("ended", () => {
+    musicBtn.textContent = "🎵 Play our song ❤️";
+  });
+  </script>
+ </body>
+</html>
